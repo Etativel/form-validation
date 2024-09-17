@@ -287,7 +287,17 @@
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
         <span class="country error"></span>
-        <input class="zip-input" type="text" placeholder="Zip Code" required />
+        <!-- <input class="zip-input" type="text" placeholder="Zip Code" required /> -->
+        <input
+          class="zip-input"
+          type="text"
+          pattern="[0-9]{5}"
+          title="Five digit zip code"
+          placeholder="Zip code"
+          required
+          minlength="5"
+          maxlength="5"
+        />
         <span class="zip error"></span>
         <input
           class="pass-input"

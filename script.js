@@ -21,6 +21,38 @@ email.addEventListener("input", () => {
   }
 });
 
+country.addEventListener("input", (e) => {
+  if (country.validity.valid) {
+    countryError.textContent = "";
+    countryError.className = "error";
+    country.classList = "country-input";
+  } else {
+    showCountryError();
+  }
+});
+
+zipCode.addEventListener("input", (e) => {
+  if (zipCode.validity.valid) {
+    zipError.textContent = "";
+    zipError.className = "error";
+    zipError.classList = "zip-input";
+  } else {
+    showZipError();
+  }
+});
+
+function showZipError() {
+  if (zipCode.validity.valueMissing) {
+    zipError.textContent = "You need to enter your zip code";
+  } else if (!zipCode.validity.valid) {
+    zipError.textContent = "Entered value needs to be a 5-digit number";
+  } else if (zipCode.validity.tooShort || zipCode.validity.tooLong) {
+    zipError.textContent = "Entered value needs to be exactly 5 characters";
+  }
+  zipError.className = "error active";
+  zipCode.className = "zip-input input-error";
+}
+
 function showEmailError() {
   if (email.validity.valueMissing) {
     emailError.textContent = "You need to enter your email address.";
@@ -32,18 +64,16 @@ function showEmailError() {
   emailError.className = "error active";
   email.className = "email-input input-error";
 }
-
-country.addEventListener("input", (e) => {
-  if (country.validity.valid) {
-    countr;
+function showCountryError() {
+  if (country.validity.valueMissing) {
+    countryError.textContent = "You need to enter your country.";
   }
-});
+  countryError.classList = "error active";
+  country.className = "country-input input-error";
+}
 
 form.addEventListener("submit", (e) => {
-  showError();
+  // showError();
   e.preventDefault();
+  form.reset();
 });
-
-function showError() {
-  showEmailError();
-}

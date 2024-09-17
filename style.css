@@ -63,6 +63,15 @@ input:invalid {
   background-color: #fdd;
 }
 
+select:invalid {
+  border-color: #900;
+  background-color: #fdd;
+}
+
+option {
+  background-color: white;
+}
+
 input:focus:invalid {
   outline: none;
 }
